@@ -1,0 +1,41 @@
+import java.util.Scanner;
+
+public class EjercicioFunciones {
+    
+    public static void main(String[] args) {
+        Scanner lector = new Scanner(System.in);
+        
+        // Definir centro y radio del círculo
+        int centroX = 0;
+        int centroY = 0;
+        int radio = (int) (Math.random() * 10) + 5; // Radio aleatorio entre 5 y 15
+        
+        System.out.println("Centro del círculo: (" + centroX + ", " + centroY + ")");
+        System.out.println("Radio del círculo: " + radio);
+        
+        // Pedir coordenadas al usuario
+        System.out.print("Ingrese la coordenada X del disparo: ");
+        int x = lector.nextInt();
+        
+        System.out.print("Ingrese la coordenada Y del disparo: ");
+        int y = lector.nextInt();
+        
+        // Calcular distancia del disparo al centro del círculo
+        double distancia = CalcularDistancia(x, y, centroX, centroY);
+        System.out.printf("Distancia al centro: %.2f\n", distancia);
+        
+        // Determinar si el disparo está dentro del círculo
+        if (distancia <= radio) {
+            System.out.println("El disparo está dentro del círculo.");
+        } else {
+            System.out.println("El disparo se salió del tablero.");
+        }
+        
+        lector.close();
+    }
+    
+    // Método para calcular la distancia entre dos puntos
+    public static double CalcularDistancia(int x, int y, int cx, int cy) {
+        return Math.sqrt(Math.pow(x - cx, 2) + Math.pow(y - cy, 2));
+    }
+}
